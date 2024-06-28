@@ -1,0 +1,111 @@
+.home {
+  padding: 2rem;
+}
+
+@media (min-width: 2000px) {
+  .home {
+    padding: 6rem;
+    margin-top: 8rem;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 760px) {
+  .home {
+    font-size: 16px;
+    padding: 2rem;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo > svg {
+  height: 200px;
+}
+
+.logo > svg > * > path {
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 0;
+  animation: dash 5s linear normal 1 forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 3000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.glyph > img {
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.bttn {
+  background-color: black;
+  color: white;
+  min-width: 250px;
+  padding: 12px;
+}
+
+/* CSS */
+.button56 {
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #111;
+  border-radius: 0px;
+  box-sizing: border-box;
+  color: #111;
+  font-family: "EB Garamond", serif;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+@media (max-width: 400px) {
+  .button56 {
+    padding: 35px 25px;
+  }
+}
+
+.button56:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+}
+
+.button56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button56 {
+    padding: 0 40px;
+  }
+}

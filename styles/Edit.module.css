@@ -1,0 +1,43 @@
+.sections {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sections > div,
+.section > div {
+  color: Blue;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sections > .activeSection {
+  color: red;
+}
+
+.updateScriptInput {
+  height: 168px !important;
+}
+
+.section > form > input {
+  width: 100%;
+  height: 44px;
+}
+
+.section > form > button {
+  color: Blue;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.scriptSelectors > div {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.scriptSelectors > .activeScript {
+  color: red;
+}

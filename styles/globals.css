@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond");
+
+body {
+  /* background-image: url("https://images-cdn.welcomesoftware.com/Zz0zZTliMjQ4MzhlNGExMWViYmJiMjFiZTI2ZWNmN2MzZA==");
+  background-size: cover; */
+  overflow-x: hidden;
+  background: white;
+  background-image: radial-gradient(black 1px, transparent 0);
+  background-size: 40px 40px;
+  background-position: -19px -19px;
+}
+
+.app {
+  padding: 2rem;
+}
+
+@media (max-width: 400px) {
+  .app {
+    padding: 0rem;
+  }
+}
+
+#content {
+  margin: 3rem;
+  line-height: 25px;
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #111;
+}
+
+a {
+  color: #111;
+}
+
+.header {
+  position: fixed;
+  top: 0px;
+  line-height: 25px;
+  font-family: "EB Garamond", serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  z-index: 100;
+  padding: 18px 0px;
+  width: 100%;
+}
+
+.header > a {
+  float: left;
+  padding-right: 50px;
+}
+
+.header > div {
+  float: left;
+  cursor: pointer;
+  color: #111;
+}
+
+.footer {
+  font-family: "EB Garamond", serif;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 1px;
+  font-size: 18px;
+  width: 100%;
+  padding: 8px 0px;
+  background-color: white;
+}
+
+.footer > .left {
+  margin-left: 5rem;
+  flex: 1;
+  text-align: left;
+}
+
+.footer > .center {
+  flex: 1;
+  text-align: center;
+}
+
+.footer > .right {
+  flex: 1;
+  text-align: right;
+}
+
+.left > a {
+  padding-right: 20px;
+}
+
+.right > a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.right > a {
+  padding-left: 20px;
+}
+
+.footer > .right > a > img {
+  height: 15px;
+}
+
+.tbl {
+  width: 100%;
+}
+
+.tbl-row {
+  border-bottom: 1px solid;
+}
+
+.token-description {
+  padding: 0 6rem;
+  word-break: break-all;
+}
+
+.hide-on-mobile {
+  display: block;
+}
+
+.detail-view {
+  width: 45vw;
+  height: 45vw;
+}
+
+.main-title {
+  font-size: 64px;
+}
+
+@media (max-width: 450px) {
+  .token-description {
+    padding: 0rem;
+    word-break: break-all;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .mobile-padding {
+    padding: 24px 0px;
+  }
+
+  .detail-view {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .main-title {
+    font-size: 32px;
+  }
+}
+
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

@@ -1,0 +1,214 @@
+let seed=gs(tokenData.hash);const urlParams=new URLSearchParams(window.location.search);function gs(token){return parseInt(tokenData.hash.slice(0,16),16)}function rd(){return seed^=seed<<13,seed^=seed>>17,seed^=seed<<5,(seed<0?1+~seed:seed)%1e3/1e3}function rb(a,b){return a+(b-a)*rd()}function rj(a,j){return rb(a-j,a+j)}function rc(choices){return choices[Math.floor(rb(0,.99*choices.length))]}function rco(choices){let a=[];return choices.forEach((elem,idx)=>{for(let i=0;i<elem.w;i++)a.push(elem)}),rc(a)}function shuffle(a){for(let i=a.length-1;0<i;i--){var j=Math.floor(rd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}function gj(a,name,val=!1){let out=a.filter(({n})=>n==name);return val?(out=out.map(({v})=>v),[...out]):out[0]}function hexRgb(result){result=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(result);return result?{r:parseInt(result[1],16),g:parseInt(result[2],16),b:parseInt(result[3],16)}:null}function hexV3(h){h=/^\#([A-Fa-f\d]+)$/.exec(h)[1];let out;return 3===h.length?out=[parseInt(h[0]+h[0],16)/255,parseInt(h[1]+h[1],16)/255,parseInt(h[2]+h[2],16)/255]:6===h.length&&(out=[parseInt(h[0]+h[1],16)/255,parseInt(h[2]+h[3],16)/255,parseInt(h[4]+h[5],16)/255]),out}function lerpHex(ag,bh,s){var ab=+ag.replace("#","0x"),ar=ab>>16,ag=ab>>8&255,ab=255&ab,bh=+bh.replace("#","0x");return"#"+((1<<24)+(ar+s*((bh>>16)-ar)<<16)+(ag+s*((bh>>8&255)-ag)<<8)+(ab+s*((255&bh)-ab))|0).toString(16).slice(1)}function hex3to6(hx){return 7<=(hx="#"!=hx[0]?"#"+hx:hx).length?hx:hx=hx.split("").map(ch=>"#"==ch?ch:ch+ch).join("")}function lerp(min,max,pct){return min*(1-pct)+max*pct}function mapRng(val,start1,stop1,start2,stop2){return(val-start1)/(stop1-start1)*(stop2-start2)+start2}function titleCase(str){str=str.toLowerCase().split(" ");for(let i=0;i<str.length;i++)str[i]=str[i].charAt(0).toUpperCase()+str[i].slice(1);return str.join(" ")}function urlP(s){return urlParams.get(s)?titleCase(urlParams.get(s)):""}function getDate(dayOnly=!1){let dd=(new Date).toLocaleString("en-US",{timeZone:"America/Los_Angeles"});var day=new Date(dd).getDay(),d=dd.split("/");return dayOnly?day:d[0]+d[1]}let cw="#F2F3EE",cb="#222222",zephyrPal=["#4E6E61","#365","#4C3F5D","#336","#358","#CCC","#45A","#576","#5493B6","#7AC","#89292D","#87A","#8F3935","#A33","#B8513B","#B78","#C54","#C95","#D57C30","#D94","#DA9","#C99","#DEC254"],palette=[{w:12,n:"Riley",v:["#E8E2D6","#656463","#333","#111","#F3F3EF","#000",cw,cb]},{w:2,n:"Darkness",v:["#111","#656463","#333",cb,"#000","#454443",cb,"#656463","#313035"]},{w:1,n:"Light",v:["#EFE8D8","#fff","#F3F3EF","#E8E2D6",cw,"#DEDFDA","#fff","#ccc","#EEE"]},{w:10,n:"South Beach",v:["#78cdd0","#fdd4bd","#253122","#f9c1ce",cw,cb]},{w:10,n:"Young Again",v:["#a36aa5","#006eb8","#fcb315","#e31f26",cw,cb]},{w:10,n:"Laguna",v:["#cee","#9bc","#099","#78cdd0",cw,cb]},{w:9,n:"Phoenix",v:["#8F3935","#D94","#E8E2D6",cw,cb]},{w:5,n:"Slayer",v:["#6d4145","#ca92a8","#713b4c","#f9c1ce",cw,cb]},{w:7,n:"Bacon",v:["#89292D","#7A0000","#A33","#7A2B2A","#863A39","#A13A34",cw,cb]},{w:7,n:"Thaddeus",v:["#064f6e","#f68c50","#40456a","#f3a257",cw,cb]},{w:3,n:"Squidgit",v:["#7a4456","#c2ae93","#c27544","#762c19",cw,cb]},{w:3,n:"BB",v:["#12354e","#c2ae93","#bb7125","#eea78c",cw,cb]},{w:10,n:"Cat's Game",v:["#336","#45A","#A33","#f3a257",cw,cb]},{w:3,n:"Sycamore",v:["#6E4E37","#C54","#B73","#CCC","#C95","#D57C30","#D94",cw,cb]},{w:5,n:"Silverado",v:["#34454c","#d8a37b","#71502f","#f5ecc2",cw,cb]},{w:2,n:"Certainty",v:["#547076","#c5a56e","#f5ecc2","#dd4027",cw,cb]},{w:2,n:"Tinkham",v:["#006eb8","#00978d","#fdbf68","#f99d1b",cw,cb]},{w:15,n:"Oracle",v:["#000",rc(zephyrPal),cb,cw,cb,cw]},{w:3,n:"Basil Gogos",v:["#823d65","#83ABAB",cb,"#7A4280",cb,cw]},{w:10,n:"Cat's Cradle",v:["#45A","#336","#358","#5493B6",cw,cb]},{w:8,n:"Front Row",v:["#336","#5493B6","#89292D","#87A",cw,cb]},{w:7,n:"Coalinga",v:["#2C2728","#8E7D7A","#A55556","#474044","#162122","#2C2728","#3F4245","#5A6268","#454A4F","#28292A","#B8C3D4","#AD8A85","#9F9897","#3B3B3B","#767273","#3F3533","#4D4947","#6A6261","#B2775F"]},{w:5,n:"Halcyon",v:["#756485","#835061","#9A95A0","#B6A5C8","#9B85A2","#835061","#C58FAD","#BC849E","#883E3F","#BD636E","#CF707D","#703946","#8C495C","#B9627D","#683D4D","#3F2D39","#7F4364","#5E3750","#252830","#4A354F","#3A2D3E","#1E231D","#242525","#212322","#1C211E","#2E272D","#42303D","#26262D","#482F37","#7B4048","#4C3037","#442F35","#A9554E","#9C4E47","#4E282B","#B26A53","#CE7C5D","#884331","#9A605B","#C48A8C","#A06B6A","#714A4F","#A88DB1","#A38AAE","#594662","#B1A9B4","#242525","#212322","#1C211E"]},{w:1,n:"Avid Lines Field",v:["#FCE8CD","#433520","#025955","#00917C"]},{w:1,n:"Avid Lines College",v:["#393E46","#FFD368","#EEEEEE","#222831"]},{w:1,n:"Bedtime Jim",v:["#263DB2","#6D9BDE","#3F5AE4","#E17B6D","#E9D5AA","#7F3A26","#FFFDDF","#000000"]},{w:1,n:"Miami Jim",v:["#4F0DFA","#FF1BD2","#000000","#FD8B5B","#5A65FA","#C54E38","#F38B7C"]},{w:5,n:"Pickup",v:["#DC5D4A","#89CEE3","#DF5B44","#D96E58","#89CEE3","#6BB5E0",cw,"#CFCE9A","#DCE29E","#73554D","#3C2F65",cb,"#B98E68","#98724B","#6B4D26","#B0934D",cb,"#006AB8","#A5825C","#5B5463","#00579F","#287BB7"]},{w:2,n:"jp",v:["#C9C9B9","#CAA384","#E6BF9B","#DCB595","#86867D","#493C38",cb,"#B4A592","#BC997E","#D8B390","#E17E58","#3E475D","#5B4E53","#B17867","#A94A26","#A0715A","#E37B49","#4D576B","#3C3D54","#D07C52","#CA8F72","#BCA996","#D2643C",cb,cw]},{w:5,n:"Precaution",v:[cw,"#D05C4E","#EBE5D9","#F1BFB7",cb,"#F1BFB7","#BAD6C8","#F9CC6A","#77A3BB","#A8A298"]},{w:2,n:"Just Outside",v:["#7BAEAE","#DAC8B9","#7AB0B5","#A1B5B5","#F9CC6A","#DAC8B9","#E0CBB9","#E4C0A5","#C73D23","#A5281A","#000000","#797269","#CB464C","#C30F13","#B12021","#DFA688",cw,"#000000","#4F5A6A",cw,"#D1962D","#D1A759"]},{w:10,n:"Construct",v:["#6CA9C2","#C7B9A3","#B2B9B6","#93B0BA","#6CA9C2","#4E9CC0","#4291BE","#4195C2","#4E8ABA","#7585AE",cw,cb,cw,"#BBA0AF","#B1799E","#BB618A","#C15F82","#BD5A80","#C15E86","#C7658C","#C48AA0","#C69FAA","#C2AFAF",cw,cb,cw]},{w:10,n:"New Room",v:["#C6BCAF","#CFB853","#692C45","#252424","#C6BCAF","#2F4571","#692C45","#C6BCAF","#40604E","#C6BCAF","#A63C3D","#252424","#212D55","#C6BCAF","#252424"]}];console.log(tokenData.hash);let dim=getDim(),cnv,cnvGlyph,cnvGlyphBlur,paused=!1,frameCount=0;function getDim(){let d={};var w=window.innerWidth,h=window.innerHeight;return d.min=Math.min(w,h),d.w=d.min*devicePixelRatio*1.21243,d.h=d.min*devicePixelRatio*1.21243,urlP("dl")&&(console.log("Rendering in HD..."),d.w=5700,d.h=5700),d}let pp={glyph:[{w:2,n:String.raw`X/\ `,v:[".","X","/","\\","."]},{w:2,n:String.raw`+-|`,v:[".","+","-","|","."]},{w:1,n:String.raw`/\ `,v:[".","/","\\",".","."]},{w:1,n:String.raw`\|-/`,v:[".","\\","|","-","/"]},{w:3,n:String.raw`O|-`,v:[".","O","|","-","."]},{w:1,n:String.raw`\ `,v:[".","\\",".",".","."]},{w:2,n:String.raw`#|-+`,v:[".","#","|","-","+"]},{w:2,n:String.raw`O`,v:[".","O","O",".","."]},{w:2,n:String.raw`#`,v:[".","#",".",".","."]},{w:3,n:String.raw`#O`,v:[".","#","O",".","."]}],plcmt:[{w:1,n:"Exposed",v:.17},{w:12,n:"Inset",v:.095},{w:3,n:"Full Bleed",v:0}],border:[{w:0,n:"None",v:"0."},{w:4,n:"Trimmed",v:"2."}],numUp:[{w:70,n:"Solo",v:"1."},{w:1,n:"Quad",v:"2."}],cThk:[{w:10,n:"Thick",v:.015},{w:7,n:"Thin",v:.01},{w:4,n:"Micro",v:.005},{w:21,n:"Pixelated",v:.015}],gBlur:[{w:10,n:"Small",v:.001},{w:3,n:"Medium",v:.0025},{w:1,n:"Large",v:.006},{w:0,n:"Minimal",v:1e-4}],bg:[{w:0,n:"None",v:cb},{w:4,n:"Light",v:cw},{w:9,n:"Dark",v:cb},{w:1,n:"Sync",v:0}],frameColor:[{w:0,n:"None",v:cb},{w:1,n:"Light",v:cw},{w:1,n:"Dark",v:cb},{w:0,n:"Sync",v:cb}],skeleton:[{w:0,n:"Reveal",v:"1."},{w:0,n:"Overlay",v:".5"},{w:1,n:"Hide",v:"0."}],colorize:[{w:1,n:"True",v:"1."},{w:0,n:"False",v:"0."}],ms:[{w:8,n:"Conceptual",v:120},{w:1,n:"Meditative",v:10}],bgBlur:[{w:5,n:"Active",v:"blurBG"},{w:1,n:"Middling",v:"blurBG"},{w:0,n:"Dormant",v:""}],zoom:[{w:2,n:"Enhance",v:[.3722,.2556]},{w:7,n:"In",v:[.2573,.4854]},{w:15,n:"Out",v:[0,1]}],zoomMove:[{w:1,n:"On",v:"1."},{w:30,n:"Off",v:"0."}],spread:[{w:2,n:"Full",v:.015},{w:4,n:"Mid",v:.008},{w:3,n:"Little",v:.005},{w:1,n:"None",v:4e-4}],direction:[{w:2,n:"Reverse Angle",v:[-1,1]},{w:4,n:"Vertical",v:[0,1]},{w:4,n:"Horizontal",v:[1,0]},{w:2,n:"Forward Angle",v:[1,1]}],phase:[{w:5,n:"PI by 2",v:"PI/2."},{w:3,n:"PI by 4",v:"PI/4."},{w:2,n:"PI by 6",v:"PI/6."},{w:10,n:"Flat",v:"0."}],xFiles:[{w:175,n:"Classified",v:0},{w:1,n:"I want to believe",v:1}],ct:[{w:1,n:"Reckoning",v:[21,24,30,33,39,42]},{w:1,n:"Removed",v:[30,33]},{w:0,n:"None",v:[100]}],cRep:[{w:1,n:"Few",v:2},{w:1,n:"Some",v:3},{w:1,n:"Many",v:4}],prophecy:[{w:1,n:"Chosen",v:"None"}],ctgry:[{w:0,n:"Ghost",v:""},{w:0,n:"Pixelated",v:""},{w:1,n:"Within",v:""},{w:1,n:"Without",v:""}],prints:[{w:0,n:"Member",v:"1."},{w:1,n:"Smudged",v:"0."}],pal:palette},p={};for(let key in pp)p[key]=rco(pp[key]);424==getDate()&&(p.pal=gj(pp.pal,"Riley")),6==getDate(!0)&&(p.ms=gj(pp.ms,"Meditative"));let printsBal=tokenData.fingerprintsBalance;for(let i=0;i<p.pal.v.length;i++)p.pal.v[i]=hex3to6(p.pal.v[i]);if(["Out","In","Enhance"].includes(urlP("zoom"))&&(p.zoom=gj(pp.zoom,urlP("zoom"))),["Reveal","Overlay","Hide"].includes(urlP("glyph"))&&(p.skeleton=gj(pp.skeleton,urlP("glyph"))),.01<p.cThk.v&&"In"==p.zoom.n?p.ctgry.n="Personal":.01<=p.cThk.v&&"Enhance"==p.zoom.n&&"Large"==p.gBlur.n&&(p.cThk=gj(pp.cThk,"Thin"),p.ctgry.n="Ghost"),"Ghost"!=p.ctgry.n||"Light"!=p.pal.n&&"Darkness"!=p.pal.n||(p.pal=gj(pp.pal,"Oracle")),"Oracle"==p.pal.n){let oc=gj(pp.pal,"Oracle");oc=oc.v[1],p.prophecy.v=oc.replace("#","")}p.glyph.n==String.raw`\ `&&(p.cThk.n="Crutch",p.cThk.v=.05),"Pixelated"==p.cThk.n&&(p.phase=gj(pp.phase,"Flat"),p.gBlur=gj(pp.gBlur,"Minimal")),(.01<p.cThk.v&&.5<p.gBlur.v||"Exposed"==p.plcmt.n)&&(p.zoom=gj(pp.zoom,"Out")),"Enhance"==p.zoom.n&&"Micro"==p.cThk.n&&(p.cThk=gj(pp.cThk,"Thin")),"Out"==p.zoom.n&&(p.ct=gj(pp.ct,"None")),0==p.plcmt.v&&printsBal<998&&(p.border=gj(pp.border,"None")),"Sync"==p.bg.n?(p.bg.v=p.pal.v[0],p.frameColor=gj(pp.frameColor,"Dark")):"Light"==p.bg.n?p.frameColor=gj(pp.frameColor,"Dark"):"Dark"==p.bg.n&&(p.frameColor=gj(pp.frameColor,"Light")),998<printsBal&&(p.prints=gj(pp.prints,"Member"),p.frameColor=gj(pp.frameColor,"Sync"),p.frameColor.v=p.pal.v[1],p.plcmt=gj(pp.plcmt,"Inset")),"Darkness"==p.pal.n&&(p.bg=gj(pp.bg,"Dark")),"Light"==p.pal.n&&(p.bg=gj(pp.bg,"Light")),p.xFiles.v&&(p.pal=gj(pp.pal,"Darkness"),p.plcmt=gj(pp.plcmt,"Full Bleed"),p.ms.n="Warp Speed",p.ms.v=1,p.ctgry.n="Intergalactic"),["Meditative","Conceptual"].includes(urlP("ms"))&&(p.ms=gj(pp.ms,urlP("ms")));for(let i=0;i<p.pal.v.length;i++)p.pal.v[i]=hex3to6(p.pal.v[i]);let size=64,half_size=size/2,a=.054321*Math.abs(seed),c=0,m=a%11+5,output=[];for(let i=0;i<64;i++){let y=2*(i-32)+1;a%3==1?y=-y:a%3==2&&(y=Math.abs(y)),y*=a;for(let j=0;j<64;j++){let x=2*(j-32)+1;a%2==1&&(x=Math.abs(x)),v=Math.abs(parseInt(x*a*y%m)),symb=v<5?p.glyph.v[v]:".",p.ct.v.includes(i)&&p.ct.v.includes(j)&&(symb=p.glyph.v[1]),output[c]=symb,c++}output[c]="%0A",c+=3}p.glyph.v=output.join("");let palRand=p.pal.v,palLerp=[],palRgb=[];for(let i=0;i<p.cRep.v;i++)shuffle(p.pal.v),palRand=palRand.concat(p.pal.v);let numSteps;for(let i=0;i<palRand.length-1;i++){numSteps=5*rd()+2;for(let step=0;step<numSteps;step++)palLerp.push(lerpHex(palRand[i],palRand[i+1],step/numSteps))}palLerp=palLerp.slice(0,333);for(let step=0;step<numSteps;step++)palLerp.push(lerpHex(palRand[palRand.length-1],palRand[0],step/numSteps));function drawCharacter(ch,x,y,cr,thickness,charStyle,xgrid,ygrid,normal=!1){function svgLine(x1,y1,x2,y2,strokeWidth=1,stroke="black",strokeOpacity=1){return`<line x1="${x1}" y1="${y1}" 
+                      x2="${x2}" y2="${y2}" 
+                      stroke-width="${strokeWidth}"
+                      stroke="${stroke}"
+                      stroke-opacity="${strokeOpacity}"
+                      stroke-linecap="square"
+                />`}cr*=.95,charStyle||(cOff=0,aOff=.06,"Micro"==p.cThk.n?aOff=.3:"Thick"==p.cThk.n&&(aOff=.03),charStyle=`rgba(${cOff}, ${cOff}, ${cOff}, ${aOff})`);let svgChar="";return"\\"==ch?svgChar+=svgLine(x-cr,y+cr,x+cr,y-cr,thickness,charStyle):"/"==ch?svgChar+=svgLine(x-cr,y-cr,x+cr,y+cr,thickness,charStyle):"X"==ch?(svgChar+=svgLine(x-cr,y+cr,x+cr,y-cr,thickness,charStyle),svgChar+=svgLine(x-cr,y-cr,x+cr,y+cr,thickness,charStyle)):"|"==ch?svgChar+=svgLine(x,y-cr,x,y+cr,thickness,charStyle):"-"==ch?svgChar+=svgLine(x-cr,y,x+cr,y,thickness,charStyle):"+"==ch?(svgChar+=svgLine(x,y-cr,x,y+cr,thickness,charStyle),svgChar+=svgLine(x-cr,y,x+cr,y,thickness,charStyle)):"O"==ch?(thickness*=3.15,svgChar+=normal?`<circle cx="${x}" cy="${y}" 
+                            r="${thickness}" 
+                            stroke-width="${.2*thickness}"
+                            stroke-opacity="1"
+                            stroke="${charStyle}"
+                            fill-opacity="0"
+                      />`:`<circle cx="${x}" cy="${y}" 
+                            r="${thickness}" 
+                            stroke-opacity="0"
+                            fill="${charStyle}"
+                      />`):"#"==ch&&(thickness*=6.6,svgChar+=`
+        <rect x="${x-thickness/2}" y="${y-thickness/2}" 
+              width="${thickness}" height="${thickness}"
+                            stroke-opacity="0"
+              stroke="${charStyle}"
+              fill="${charStyle}"
+        />
+        `),svgChar}function drawGlyph(normal=0){glyphText=p.glyph.v.replace(/%0A/g,""),characters="",charactersNormal="",char_idx=0,border_size=dim.w*p.plcmt.v,cell_radius=(dim.w-2*border_size)/64/2*1.04;for(let y=0;y<64;y++)for(let x=0;x<64;x++){yy=mapRng(y,0,63,63,0);var yC=x/63,cc=yy/63,xC=lerp(border_size,dim.w-border_size,yC),yC=lerp(border_size,dim.h-border_size,cc);characters+=drawCharacter(glyphText[char_idx],xC,yC,cell_radius,dim.w*p.cThk.v,!1,x,yy);cc=hexRgb(p.pal.v[char_idx%p.pal.v.length]);charactersNormal+=drawCharacter(glyphText[char_idx],xC,yC,cell_radius,.002*dim.w,`rgba(${cc.r},${cc.g},${cc.b},1)`,x,yy,!0),char_idx++}return charactersBG="Middling"==p.bgBlur.n?`<g filter="url(#blurBG)">${characters}</g>`:"Active"==p.bgBlur.n?`
+            <g filter="url(#blurBG3)">${characters}</g>
+            <g filter="url(#blurBG2)">${characters}</g>
+            <g filter="url(#blurBG1)">${characters}</g>
+            `:"",zV1=p.zoom.v[0],zV2=p.zoom.v[1],zoomView=`viewBox="${dim.w*zV1} ${dim.h*zV1} ${dim.w*zV2} ${dim.h*zV2}"`,svg=`
+    <svg xmlns="http://www.w3.org/2000/svg" width="${dim.w}" height="${dim.h}" 
+            ${zoomView}
+            stroke="black"
+            fill="black"
+            stroke-width="5"
+            style="background-color:white">
+
+        <filter id="blur">
+            <feGaussianBlur stdDeviation="${dim.w*p.gBlur.v}"/>
+        </filter>        
+
+        <filter id="blurBG">
+            <feGaussianBlur stdDeviation="${rj(4,.5)*dim.w*p.gBlur.v}"/>
+        </filter>
+
+        <filter id="blurBG2">
+            <feGaussianBlur stdDeviation="${rj(7,.5)*dim.w*p.gBlur.v}"/>
+        </filter>
+
+        <filter id="blurBG3">
+            <feGaussianBlur stdDeviation="${rj(15,.5)*dim.w*p.gBlur.v}"/>
+        </filter>
+
+        ${charactersBG}
+        
+        <g filter="url(#blur)" >
+            ${characters}
+        </g>
+    </svg>
+`,svgNormal=`
+    <svg  xmlns="http://www.w3.org/2000/svg" width="${dim.w}" height="${dim.h}" 
+            ${zoomView}
+            stroke="black"
+            fill="black"
+            stroke-width="5"
+            style="background-color:rgb(255,255,255)">
+           
+           <filter id="blurGN">
+            <feGaussianBlur stdDeviation="${1e-4*dim.w}"/>
+        </filter>    
+            ${charactersNormal}
+
+    </svg>
+        `,[svg,svgNormal]}function loadSvg(svgTxt,callback){let img=new Image;return img.src="data:image/svg+xml, "+encodeURIComponent(svgTxt),img.onload=callback,img}function loadSvgs(svgsTxt,callback){let svgs=[],svgsCount=svgsTxt.length;var onSvgLoad=()=>{--svgsCount,0===svgsCount&&callback(svgs)};for(let i=0;i<svgsCount;i++){var svg=loadSvg(svgsTxt[i],onSvgLoad);svgs.push(svg)}}function main(){svgsTxt=drawGlyph(),loadSvgs(svgsTxt,getProgram)}function createTex(gl){var tex=gl.createTexture();return gl.bindTexture(gl.TEXTURE_2D,tex),gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR),gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR),gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE),gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE),tex}palRgb=[],palLerp.forEach(element=>{cRgb=hexRgb(element),palRgb.push(cRgb.r,cRgb.g,cRgb.b)}),gridDim={x:dim.w*p.plcmt.v,y:dim.h*p.plcmt.v,w:dim.w-2*dim.w*p.plcmt.v,h:dim.h-2*dim.w*p.plcmt.v},cnv=document.createElement("canvas"),gl=cnv.getContext("webgl",{antialias:!1,preserveDrawingBuffer:!0}),gl.getExtension("OES_standard_derivatives");let getProgram=svgs=>{const vs=`
+precision highp float; 
+attribute vec2 aPosition;
+attribute vec2 aTexCoord;
+varying vec2 vTC;
+void main(){
+    vTC=aTexCoord;
+    vec4 p4=vec4(aPosition*2.-1.,0,1.);
+    // p4.xy=p4.xy*2.-1.;
+    gl_Position=p4;}
+`,fs=`
+    #define PI 3.1415926538
+    #ifdef GL_OES_standard_derivatives
+#extension GL_OES_standard_derivatives : enable
+#endif
+
+precision highp float; 
+uniform vec2 uR;
+uniform float uT;
+uniform float uTC;
+uniform float uTS;
+uniform float uGN;
+uniform float uC;
+uniform sampler2D texC;
+uniform sampler2D texG;
+uniform sampler2D texGN;
+varying vec2 vTC;
+
+
+float map(float val, float start1, float stop1, float start2, float stop2) {
+    return ((val - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
+  }
+
+vec3 getGlyph(vec2 uv, sampler2D tex) {
+    vec4 tG = texture2D(tex, vec2(uv.x, uv.y));
+    return vec3(tG.r, tG.g, tG.b);
+}
+
+vec3 blur(sampler2D image, vec2 uv, vec2 direction) {
+    vec4 color = vec4(0.0);
+    vec2 f1 = vec2(1.411764705882353) * direction;
+    vec2 f2 = vec2(3.2941176470588234) * direction;
+    vec2 f3 = vec2(5.176470588235294) * direction;
+    color += texture2D(image, uv) * 0.1964825501511404;
+    color += texture2D(image, uv + f1) * 0.2969069646728344;
+    color += texture2D(image, uv - f1) * 0.2969069646728344;
+    color += texture2D(image, uv + f2) * 0.09447039785044732;
+    color += texture2D(image, uv - f2) * 0.09447039785044732;
+    color += texture2D(image, uv + f3) * 0.010381362401148057;
+    color += texture2D(image, uv - f3) * 0.010381362401148057;
+    return vec3(color.r, color.g, color.b);
+  }
+
+vec3 colorize(vec2 uv, vec3 c) {
+    vec4 cC = vec4(c, 1.);
+    float cBrightness = (c.r + c.g + c.b) / 3.;
+    cC = texture2D(texC, vec2(mod(cBrightness+uTC+${rd()+1e-4}, 1.)));
+    // if (cBrightness > 0.996) {
+        // cC = vec4(${hexV3(p.bg.v)}, 1.);
+    //     cC = mix(c, vec3(${hexV3(p.bg.v)}));
+    // }
+    return vec3(cC.r, cC.g, cC.b);
+}
+
+vec3 draw(vec2 uv) {
+    vec2 uvTemp = uv;
+    vec3 c = vec3(0.);
+
+    if (${p.zoomMove.v}>0.){
+        float z = .1*sin(uTS*2.*PI)+.9;
+        vec2 s = vec2(.5);
+        uv = (uv - s)*z+s;
+    }
+
+    c = getGlyph(uv, texG);
+    c = blur(texG, uv, 
+        vec2(${p.spread.v*p.direction.v[0]}*sin(uTS*2.*PI*.5+${p.phase.v}),
+        ${p.spread.v*p.direction.v[1]}*sin(uTS*2.*PI*.5+${p.phase.v})));
+
+    vec3 cGN = getGlyph(uv, texGN);
+    if (uGN == .5) {
+        if (cGN.r == 1. && cGN.g == 1. && cGN.b == 1.) {
+            c = c;
+        } else {
+            c = vec3(1.); 
+        }
+    } else if (uGN == 1. || uGN == .3) {
+        if (cGN.r <.1 && cGN.g == 1. && cGN.b < .1) {
+            c = vec3(1.);
+        } else {
+            c = cGN;
+        }
+    }
+    uv = uvTemp;
+
+    // frame border
+    if (${p.border.v} == 0.) {
+    } else if (${p.border.v} == 1. || ${p.border.v} == 2.) {
+        float b = 0.09;
+        if (uv.x < b || uv.x > 1.-b || uv.y < b || uv.y > 1.-b) c = vec3(${hexV3(rc(p.pal.v))});
+    }
+
+    if (uGN <= .5 && uC > .5) {
+        c = colorize(uv, c);
+    }
+
+    vec3 cUnder = c;
+
+    if (${p.border.v} == 0.) {
+    } else if (${p.border.v} == 1. || ${p.border.v} == 2.) {
+        float b = 0.09;
+        if (uv.x < b || uv.x > 1.-b || uv.y < b || uv.y > 1.-b) c = vec3(${hexV3(p.bg.v)});
+        if (${p.border.v} == 2.) {
+            b = 0.05;
+            if (uv.x < b || uv.x > 1.-b || uv.y < b || uv.y > 1.-b) {
+                // if (${p.prints.v} == 1. ) {
+                //     c = vec3(${hexV3(p.pal.v[1])});
+                // } else {
+                    c = vec3(${hexV3(p.frameColor.v)});
+                // }
+            }
+        }
+        b = 0.047;
+        if (uv.x < b || uv.x > 1.-b || uv.y < b || uv.y > 1.-b) c = vec3(${hexV3(p.bg.v)});
+    }
+
+    // c = getGlyph(uv, texC);
+
+    return c;
+}
+
+void main() {
+    vec2 uv = vTC;
+    vec3 c = vec3(1.);
+
+    uv *= ${p.numUp.v};
+    uv = fract(uv);
+
+    c = draw(uv);
+    gl_FragColor = vec4(c,1.);
+
+}
+`;var pg=gl.createProgram();if(shader=gl.createShader(gl.VERTEX_SHADER),gl.shaderSource(shader,vs.replace(/([^a-zA-Z_0-9.])([0-9]+)(?![.0-9u])/g,"$1$2.").replace(/([0-9.]e-[0-9]+)\./gi,"$1")),gl.compileShader(shader),console.log("vs compiled:",gl.getShaderParameter(shader,gl.COMPILE_STATUS),gl.getShaderInfoLog(shader)),gl.attachShader(pg,shader),shader=gl.createShader(gl.FRAGMENT_SHADER),gl.shaderSource(shader,fs.replace(/([^a-zA-Z_0-9.])([0-9]+)(?![.0-9u])/g,"$1$2.").replace(/([0-9.]e-[0-9]+)\./gi,"$1")),gl.compileShader(shader),console.log("fs compiled:",gl.getShaderParameter(shader,gl.COMPILE_STATUS),gl.getShaderInfoLog(shader)),gl.attachShader(pg,shader),gl.linkProgram(pg),console.log("shaders linked:",gl.getProgramParameter(pg,gl.LINK_STATUS)),!gl.getProgramParameter(pg,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(pg));gl.useProgram(pg);var aPosition=gl.getAttribLocation(pg,"aPosition"),aTexCoord=gl.getAttribLocation(pg,"aTexCoord"),aPositionBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,aPositionBuffer),gl.bufferData(gl.ARRAY_BUFFER,Float32Array.of(0,1,0,0,1,1,1,0),gl.STATIC_DRAW);var aTexCoordBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,aTexCoordBuffer),gl.bufferData(gl.ARRAY_BUFFER,Float32Array.of(0,1,0,0,1,1,1,0),gl.STATIC_DRAW);let textures=[];for(let ii=0;ii<svgs.length;++ii)svg=createTex(gl),gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,svgs[ii]),textures.push(svg);colorMap=createTex(gl),gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,palRgb.length/3,1,0,gl.RGB,gl.UNSIGNED_BYTE,new Uint8Array(palRgb)),textures.push(colorMap),gl.useProgram(pg),gl.enableVertexAttribArray(aPosition),gl.bindBuffer(gl.ARRAY_BUFFER,aPositionBuffer),gl.vertexAttribPointer(aPosition,2,gl.FLOAT,!1,0,0),gl.enableVertexAttribArray(aTexCoord),gl.bindBuffer(gl.ARRAY_BUFFER,aTexCoordBuffer),gl.vertexAttribPointer(aTexCoord,2,gl.FLOAT,!1,0,0),uR=gl.getUniformLocation(pg,"uR"),uT=gl.getUniformLocation(pg,"uT"),uTC=gl.getUniformLocation(pg,"uTC"),uTS=gl.getUniformLocation(pg,"uTS"),uGN=gl.getUniformLocation(pg,"uGN"),uC=gl.getUniformLocation(pg,"uC"),texC=gl.getUniformLocation(pg,"texC"),texG=gl.getUniformLocation(pg,"texG"),texGN=gl.getUniformLocation(pg,"texGN"),gl.uniform1i(texG,0),gl.uniform1i(texGN,1),gl.uniform1i(texC,2),gl.activeTexture(gl.TEXTURE0),gl.bindTexture(gl.TEXTURE_2D,textures[0]),gl.activeTexture(gl.TEXTURE1),gl.bindTexture(gl.TEXTURE_2D,textures[1]),gl.activeTexture(gl.TEXTURE2),gl.bindTexture(gl.TEXTURE_2D,textures[2]),document.body.appendChild(cnv),addEventListener("click",click),addEventListener("touchend",touchEnd,!1),addEventListener("keyup",keyup),addEventListener("resize",resize),resize(),render(),urlP("dl")&&(paused=!0,download()),console.log(p.glyph.v.replace(/%0A/g,"\n")),console.table(p)};function render(){paused&&0!=frameCount||(gl.uniform2f(uR,dim.w,dim.h),gl.uniform1f(uT,frameCount/200),gl.uniform1f(uTC,frameCount%3223/3223),gl.uniform1f(uTS,frameCount%2837/2837),gl.uniform1f(uGN,p.skeleton.v),gl.uniform1f(uC,p.colorize.v),gl.drawArrays(gl.TRIANGLE_STRIP,0,4),frameCount++),setTimeout(_=>requestAnimationFrame(render),p.ms.v)}function resize(){dim=getDim(),cnv.width=dim.w,cnv.height=dim.h,cnv.style.width=dim.min+"px",cnv.style.height=dim.min+"px",drawGlyph(),gl.viewport(0,0,dim.w,dim.h),document.body.style.backgroundColor=p.bg.v}function keyup(e){"p"==e.key?paused=!paused:"s"==e.key?download():"g"==e.key?(paused=!1,toggleGlyph()):"c"==e.key?(paused=!1,p.ms=gj(pp.ms,"Conceptual")):"m"==e.key&&(paused=!1,p.ms=gj(pp.ms,"Meditative"))}function download(){let link=document.createElement("a");fn=`withinwithout_${get_timestamp()}_0x${tokenData.hash}.png`,link.download=fn,link.href=cnv.toDataURL("image/png"),console.log(`Downloading ${fn}`),link.click()}function click(e){var rect=cnv.getBoundingClientRect();interactive(e.clientX-rect.left,e.clientY-rect.top)}function touchEnd(e){var rect=cnv.getBoundingClientRect();interactive(e.touches[0].clientX-rect.left,e.touches[0].clientY-rect.top)}function interactive(x,y){0<x&&x<dim.min/2&&y>dim.min/2&&y<dim.min?download():0<x&&x<dim.min/2&&0<y&&y<dim.min/2&&(paused=!1,toggleGlyph())}function toggleGlyph(){"Reveal"==p.skeleton.n?p.skeleton=gj(pp.skeleton,"Overlay"):"Overlay"==p.skeleton.n?p.skeleton=gj(pp.skeleton,"Hide"):"Hide"==p.skeleton.n&&(p.skeleton=gj(pp.skeleton,"Reveal"))}function get_timestamp(){return(new Date).toISOString().replace(/[^T0-9]/g,"").replace("T","_")}main();
